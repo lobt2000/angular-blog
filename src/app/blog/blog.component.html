@@ -1,0 +1,133 @@
+<header>
+  <nav class="navbar navbar-dark bg-dark">
+    <span class="text-light">Angular Blog</span>
+    <div class="user" *ngIf="hide; else newbut">
+      <button type="button" class="btn btn-outline-success signIn" (click)="openModal(signIn)">Sign In</button>
+      <button type="button" class="btn btn-outline-primary signUp" (click)="openModal(signUp)">SignUp</button>
+
+    </div>
+  </nav>
+
+</header>
+<div *ngIf="!editDel; else admin">
+<div class="card poster" *ngFor="let blog of blogs; index as i" >
+  <div class="card-body">
+    <div class="font-weight-bold">{{ blog.topic }}</div>
+    <div class="text-secondary">Posted by: {{ blog.postedBy }}</div>
+    <div class="mes">{{ blog.message }}</div>
+    <div class="date">{{ blog.date | date: 'HH:mm'}}, {{blog.date | date: 'dd.MM.yyyy'}}</div>
+<div *ngIf="blog.postedBy !== username; else  editDelBut"></div>
+<ng-template #editDelBut>
+  <div class="adminBut" *ngIf="blog.postedBy === username">
+      <button class="btn btn-warning" (click)="openModal(addPost)" (click)="edit(i)">Edit</button>
+      <button class="btn btn-danger" (click)="deleteAdminBlog(i)">Delete</button>
+  </div>
+</ng-template>
+  </div> 
+</div>
+</div>
+
+<ng-template #admin>
+  <div *ngIf="editDel">
+  <div class="card poster" *ngFor="let blog of blogs; index as i" >
+      <div class="card-body">
+          <div class="font-weight-bold">{{ blog.topic }}</div>
+          <div class="text-secondary">Posted by: {{ blog.postedBy }}</div>
+          <div class="mes">{{ blog.message }}</div>
+          <div class="date">{{ blog.date | date: 'HH:mm'}}, {{blog.date | date: 'dd.MM.yyyy'}}</div>
+          <div class="adminBut">
+          <button class="btn btn-warning" (click)="openModal(addPost)" (click)="edit(i)">Edit</button>
+          <button class="btn btn-danger" (click)="deleteAdminBlog(i)">Delete</button></div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
+<ng-template #newbut>
+  <div class="user" *ngIf="!hide">
+    <button type="button" class="btn btn-outline-success" (click)="openModal(addPost)">Add post</button>
+    <span class="btn bg-warning ">{{ username }}</span>
+    <button type="button" class="btn btn-outline-warning signUp" (click)="signOut()">Sign Out</button>
+  </div>
+</ng-template>
+
+
+
+
+
+<ng-template #signIn>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Sign In</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <img (click)="close()" src="assets/times-solid.svg" class="img" alt="">
+    </button>
+  </div>
+  <!-- <div class="modal-body"> -->
+  <div class="form">
+    <label class="text-secondary" for="email">Email:</label>
+    <input type="text" class="border border-secondary" [(ngModel)]="email" name="email" id="email">
+    <label class="text-secondary" for="pass">Password:</label>
+
+    <input type="password" class="border border-secondary" [(ngModel)]="pass" name="pass" id="pass"> <!-- </div> -->
+  </div>
+  <div class="but">
+    <button class="btn btn-secondary clos" (click)="close()" (click)="modalRef.hide()">Close</button>
+    <button class="btn btn-success submit" (click)="modalRef.hide()" (click)="submitIn()">Submit</button>
+  </div>
+</ng-template>
+
+
+
+
+<ng-template #signUp>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Sign up</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <img (click)="close()" src="assets/times-solid.svg" class="img" alt="">
+    </button>
+  </div>
+  <div class="form1">
+    <label class="text-secondary" for="name">Username:</label>
+    <input type="text" class="border border-secondary" id="name" [(ngModel)]="name" name="name">
+    <label class="text-secondary" for="addr">Email:</label>
+    <input type="text" class="border border-secondary" id="addr" [(ngModel)]="addr" name="addr">
+    <label class="text-secondary" for="password">Password:</label>
+    <input type="password" class="border border-secondary" id="password" [(ngModel)]="number" name="number">
+  </div>
+  <div class="but">
+    <button class="btn btn-secondary clos" (click)="close()" (click)="modalRef.hide()">Close</button>
+    <button class="btn btn-success submit" (click)="modalRef.hide()" (click)="submitUp()">Submit</button>
+  </div>
+</ng-template>
+
+
+
+
+<ng-template #addPost>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Add post</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <img (click)="resetForm()" (click)="modalRef.hide()" src="assets/times-solid.svg" class="img" alt="">
+    </button>
+  </div>
+  <div class="form1">
+    <label class="text-secondary" for="title">Title:</label>
+    <input type="text" class="border border-secondary" id="title" [(ngModel)]="blogTopic" name="blogTopic">
+    <label class="text-secondary" for="text">Text:</label>
+
+    <textarea [(ngModel)]="blogText" name="blogText" class="border border-secondary" id="text" cols="30" rows="10"></textarea>
+  </div>
+  <div class="but1">
+    <button class="btn btn-secondary clos" (click)="close()" (click)="modalRef.hide()">Close</button>
+    <button class="btn btn-success post" (click)="modalRef.hide()" (click)="addBlog()">Post</button>
+  </div>
+</ng-template>
+
+
+
+
+
+
+
+

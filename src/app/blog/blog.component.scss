@@ -1,0 +1,141 @@
+$margin : 0 auto;
+$width: 80%;
+$radius: 5px;
+$border: 1px solid;
+$white: white;
+
+.poster {
+  position: relative;
+  width: 80%;
+  margin: 10px auto;
+}
+
+.date {
+  position: absolute;
+  top: calc(40%);
+  right: calc(2%);
+}
+
+.form {
+  width: 100%;
+  height: 170px;
+  display: flex;
+  flex-flow: column;
+  align-self: center;
+  border-bottom: 1px solid #dee2e6;
+}
+.form1 {
+  width: 100%;
+  height: 255px;
+  display: flex;
+  flex-flow: column;
+  align-self: center;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.form>input {
+  width: 90%;
+  height: 35px;
+  padding-left: 10px;
+  border-radius: $radius;
+  margin: 0px auto;
+}
+.form1>input {
+  width: 90%;
+  height: 35px;
+  padding-left: 10px;
+  border-radius: $radius;
+  margin: 0px auto;
+}
+
+.form>label {
+  width: 90%;
+  // height: 40px;
+  margin: 10px auto;
+}
+
+.form1>label {
+  width: 90%;
+  // height: 40px;
+  margin: 10px auto;
+}
+
+.clos {
+  height: 40px;
+  width: 15%;
+  position: absolute;
+right: calc(25%);  
+  top: calc(50% - 20px);
+
+}
+
+.submit {
+  height: 40px;
+  width: 20%;
+position: absolute;
+right: calc(3%);
+top: calc(50% - 20px);
+
+}
+.post {
+  height: 40px;
+  width: 12%;
+position: absolute;
+right: calc(10%);
+top: calc(50% - 20px);
+
+}
+
+.form1>input:focus {
+  outline: none;
+  border: $border rgb(73, 161, 243);
+  box-shadow: 0 0 3px 3px rgb(73, 161, 243);
+}
+.form>input:focus {
+  outline: none;
+  border: $border rgb(73, 161, 243);
+  box-shadow: 0 0 3px 3px rgb(73, 161, 243);
+}
+
+.img {
+  // position: absolute;
+  // top: calc(35%);
+  // right: 10px;
+  height: 15px;
+  width: 15px;
+}
+.but{
+    position: relative;
+    width: 100%;
+    height: 60px;
+}
+.but1{
+    position: relative;
+    width: 100%;
+    height: 60px;
+}
+textarea{
+    width: 90%;
+    height: 100px;
+    margin: 0 auto;
+    border-radius:$radius ;
+}
+.adminBut{
+    margin-top: 20px ;
+    display: flex;
+    width: 100%;
+   justify-content: flex-end;
+}
+
+// .adminBut {
+//     visibility: hidden;
+//   }
+  
+//   .active {
+//     .adminBut {
+//       visibility: visible;
+//     }
+//   }
+.close:focus{
+  outline: none;
+}
